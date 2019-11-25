@@ -1,6 +1,12 @@
 package com.jzt.sonar.java;
 
-import com.jzt.sonar.java.checks.MyFirstCustomCheck;
+import com.jzt.sonar.java.checks.comment.AbsAndInterMethodMustDocCheck;
+import com.jzt.sonar.java.checks.comment.ClassMethodVarDocCheck;
+import com.jzt.sonar.java.checks.flow.MethodMaxLineCheck;
+import com.jzt.sonar.java.checks.log.PrintStackTraceCheck;
+import com.jzt.sonar.java.checks.log.TryCatchLogCheck;
+import com.jzt.sonar.java.checks.named.CameCaseNameCheck;
+import com.jzt.sonar.java.checks.named.FinalVariableNameCheck;
 import org.sonar.plugins.java.api.JavaCheck;
 
 import java.util.ArrayList;
@@ -20,15 +26,24 @@ public final class RulesList {
         return Collections.unmodifiableList(checks);
     }
 
-    public static List<Class<? extends JavaCheck>> getJavaChecks() {
+    static List<Class<? extends JavaCheck>> getJavaChecks() {
         return Collections.unmodifiableList(
                 Arrays.asList(
-                        MyFirstCustomCheck.class
+                        AbsAndInterMethodMustDocCheck.class,
+                        ClassMethodVarDocCheck.class,
+
+                        MethodMaxLineCheck.class,
+
+                        PrintStackTraceCheck.class,
+                        TryCatchLogCheck.class,
+
+                        CameCaseNameCheck.class,
+                        FinalVariableNameCheck.class
                 )
         );
     }
 
-    public static List<Class<? extends JavaCheck>> getJavaTestChecks() {
+    static List<Class<? extends JavaCheck>> getJavaTestChecks() {
         return Collections.emptyList();
     }
 }

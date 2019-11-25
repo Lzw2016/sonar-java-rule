@@ -1,0 +1,13 @@
+{
+  "title": "【强制】类、类属性、类方法的注释必须使用javadoc规范",
+  "type": "BUG",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "15min"
+  },
+  "tags": [
+    "custom-bug"
+  ],
+  "defaultSeverity": "Critical"
+}

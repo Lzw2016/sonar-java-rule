@@ -1,0 +1,13 @@
+{
+  "title": "【强制】所有的抽象方法必须要用javadoc注释、除了返回值、参数、异常说明外，还必须指出该方法实现什么功能",
+  "type": "BUG",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "15min"
+  },
+  "tags": [
+    "custom-bug"
+  ],
+  "defaultSeverity": "Critical"
+}

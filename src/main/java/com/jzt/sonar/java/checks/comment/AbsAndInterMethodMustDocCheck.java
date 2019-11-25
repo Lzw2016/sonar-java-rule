@@ -2,6 +2,7 @@ package com.jzt.sonar.java.checks.comment;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
+import org.sonar.check.Priority;
 import org.sonar.check.Rule;
 import org.sonar.plugins.java.api.JavaFileScanner;
 import org.sonar.plugins.java.api.JavaFileScannerContext;
@@ -9,6 +10,7 @@ import org.sonar.plugins.java.api.tree.BaseTreeVisitor;
 import org.sonar.plugins.java.api.tree.MethodTree;
 import org.sonar.plugins.java.api.tree.SyntaxToken;
 import org.sonar.plugins.java.api.tree.SyntaxTrivia;
+import org.sonar.squidbridge.annotations.SqaleConstantRemediation;
 
 import java.util.regex.Pattern;
 
@@ -19,7 +21,13 @@ import java.util.regex.Pattern;
  * 创建时间：2019/11/25 13:33 <br/>
  */
 @SuppressWarnings("UnstableApiUsage")
-@Rule(key = "AbsAndInterMethodMustDocCheck")
+@Rule(
+        key = "AbsAndInterMethodMustDocCheck",
+        name = AbsAndInterMethodMustDocCheck.ISSUE_MSG,
+        tags = {"custom-bug"},
+        priority = Priority.CRITICAL
+)
+@SqaleConstantRemediation("15min")
 @Slf4j
 public class AbsAndInterMethodMustDocCheck extends BaseTreeVisitor implements JavaFileScanner {
     private JavaFileScannerContext context;
@@ -29,8 +37,8 @@ public class AbsAndInterMethodMustDocCheck extends BaseTreeVisitor implements Ja
     private static final Pattern RETURN_CONTENT_PATTERN = Pattern.compile(".*@return\\s+.*", Pattern.DOTALL);
     private static final Pattern THROWS_CONTENT_PATTERN = Pattern.compile(".*@throws\\s+.*", Pattern.DOTALL);
 
-    private static final String ISSUE_MSG = "所有的抽象方法必须要用javadoc注释、除了返回值、参数、异常说明外，还必须指出该方法实现什么功能";
-    private static final String ISSUE_MSG_2 = "请正确使用javadoc注释";
+    static final String ISSUE_MSG = "所有的抽象方法必须要用javadoc注释、除了返回值、参数、异常说明外，还必须指出该方法实现什么功能";
+    static final String ISSUE_MSG_2 = "请正确使用javadoc注释";
 
     @Override
     public void scanFile(JavaFileScannerContext context) {

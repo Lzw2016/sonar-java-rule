@@ -1,0 +1,13 @@
+{
+  "title": "【强制】一个方法只做明确的一件事情，单个方法不能超过100行",
+  "type": "BUG",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "60min"
+  },
+  "tags": [
+    "custom-bug"
+  ],
+  "defaultSeverity": "Critical"
+}

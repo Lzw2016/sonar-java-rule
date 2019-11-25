@@ -2,10 +2,12 @@ package com.jzt.sonar.java.checks.comment;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
+import org.sonar.check.Priority;
 import org.sonar.check.Rule;
 import org.sonar.plugins.java.api.JavaFileScanner;
 import org.sonar.plugins.java.api.JavaFileScannerContext;
 import org.sonar.plugins.java.api.tree.*;
+import org.sonar.squidbridge.annotations.SqaleConstantRemediation;
 
 /**
  * 【强制】类、类属性、类方法的注释必须使用javadoc规范
@@ -14,12 +16,18 @@ import org.sonar.plugins.java.api.tree.*;
  * 创建时间：2019/11/25 13:33 <br/>
  */
 @SuppressWarnings("UnstableApiUsage")
-@Rule(key = "ClassMethodVarDocCheck")
+@Rule(
+        key = "ClassMethodVarDocCheck",
+        name = ClassMethodVarDocCheck.ISSUE_MSG,
+        tags = {"custom-bug"},
+        priority = Priority.CRITICAL
+)
+@SqaleConstantRemediation("15min")
 @Slf4j
 public class ClassMethodVarDocCheck extends BaseTreeVisitor implements JavaFileScanner {
     private JavaFileScannerContext context;
 
-    private static final String ISSUE_MSG = "类、类属性、类方法的注释必须使用javadoc规范,使用“/** ... */”格式,不得使用“// ...”方式和“/* ... */”方式";
+    static final String ISSUE_MSG = "类、类属性、类方法的注释必须使用javadoc规范,使用“/** ... */”格式,不得使用“// ...”方式和“/* ... */”方式";
 
     @Override
     public void scanFile(JavaFileScannerContext context) {

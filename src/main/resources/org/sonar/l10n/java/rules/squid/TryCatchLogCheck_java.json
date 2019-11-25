@@ -1,0 +1,13 @@
+{
+  "title": "【强制】try-catch代码必须进行日志记录",
+  "type": "BUG",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "10min"
+  },
+  "tags": [
+    "custom-bug"
+  ],
+  "defaultSeverity": "Critical"
+}

@@ -11,7 +11,6 @@ import org.sonar.api.utils.AnnotationUtils;
 import org.sonar.plugins.java.api.JavaCheck;
 import org.sonar.squidbridge.annotations.RuleTemplate;
 
-import javax.annotation.Nullable;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
@@ -27,7 +26,7 @@ public class MyJavaRulesDefinition implements RulesDefinition {
     // don't change that because the path is hard coded in CheckVerifier
     private static final String RESOURCE_BASE_PATH = "/org/sonar/l10n/java/rules/squid";
 
-    public static final String REPOSITORY_KEY = "my-company-java";
+    static final String REPOSITORY_KEY = "jzt-company-java";
 
     private final Gson gson = new Gson();
 
@@ -44,7 +43,7 @@ public class MyJavaRulesDefinition implements RulesDefinition {
         repository.done();
     }
 
-    protected void newRule(Class<? extends JavaCheck> ruleClass, NewRepository repository) {
+    private void newRule(Class<? extends JavaCheck> ruleClass, NewRepository repository) {
         org.sonar.check.Rule ruleAnnotation = AnnotationUtils.getAnnotation(ruleClass, org.sonar.check.Rule.class);
         if (ruleAnnotation == null) {
             throw new IllegalArgumentException("No Rule annotation was found on " + ruleClass);
@@ -71,7 +70,7 @@ public class MyJavaRulesDefinition implements RulesDefinition {
     private void addMetadata(NewRule rule, String metadataKey) {
         URL resource = MyJavaRulesDefinition.class.getResource(RESOURCE_BASE_PATH + "/" + metadataKey + "_java.json");
         if (resource != null) {
-            RuleMetatada metatada = gson.fromJson(readResource(resource), RuleMetatada.class);
+            RuleMetaData metatada = gson.fromJson(readResource(resource), RuleMetaData.class);
             rule.setSeverity(metatada.defaultSeverity.toUpperCase(Locale.US));
             rule.setName(metatada.title);
             rule.addTags(metatada.tags);
@@ -99,10 +98,9 @@ public class MyJavaRulesDefinition implements RulesDefinition {
         }
     }
 
-    private static class RuleMetatada {
+    private static class RuleMetaData {
         String title;
         String status;
-        @Nullable
         Remediation remediation;
 
         String type;
@@ -117,7 +115,7 @@ public class MyJavaRulesDefinition implements RulesDefinition {
         String linearOffset;
         String linearFactor;
 
-        public DebtRemediationFunction remediationFunction(DebtRemediationFunctions drf) {
+        DebtRemediationFunction remediationFunction(DebtRemediationFunctions drf) {
             if (func.startsWith("Constant")) {
                 return drf.constantPerIssue(constantCost.replace("mn", "min"));
             }

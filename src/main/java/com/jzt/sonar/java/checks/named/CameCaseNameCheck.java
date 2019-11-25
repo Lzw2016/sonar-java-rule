@@ -2,6 +2,7 @@ package com.jzt.sonar.java.checks.named;
 
 import com.jzt.sonar.utils.CameCaseUtils;
 import lombok.extern.slf4j.Slf4j;
+import org.sonar.check.Priority;
 import org.sonar.check.Rule;
 import org.sonar.plugins.java.api.JavaFileScanner;
 import org.sonar.plugins.java.api.JavaFileScannerContext;
@@ -9,6 +10,7 @@ import org.sonar.plugins.java.api.tree.BaseTreeVisitor;
 import org.sonar.plugins.java.api.tree.ClassTree;
 import org.sonar.plugins.java.api.tree.MethodTree;
 import org.sonar.plugins.java.api.tree.VariableTree;
+import org.sonar.squidbridge.annotations.SqaleConstantRemediation;
 
 /**
  * 【强制】类名、方法名、成员变量采用标准驼峰规则。类名首字母大写，方法名、成员变量首字母小写
@@ -17,7 +19,13 @@ import org.sonar.plugins.java.api.tree.VariableTree;
  * 创建时间：2019/11/25 09:30 <br/>
  */
 @SuppressWarnings("UnstableApiUsage")
-@Rule(key = "CameCaseNameCheck")
+@Rule(
+        key = "CameCaseNameCheck",
+        name = NamedIssueMsg.IssueMsg_1,
+        tags = {"custom-bug"},
+        priority = Priority.CRITICAL
+)
+@SqaleConstantRemediation("20min")
 @Slf4j
 public class CameCaseNameCheck extends BaseTreeVisitor implements JavaFileScanner {
     private JavaFileScannerContext context;

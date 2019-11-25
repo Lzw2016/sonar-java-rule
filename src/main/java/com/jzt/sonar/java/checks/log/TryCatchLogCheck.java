@@ -2,10 +2,12 @@ package com.jzt.sonar.java.checks.log;
 
 import com.google.common.collect.ImmutableSet;
 import lombok.extern.slf4j.Slf4j;
+import org.sonar.check.Priority;
 import org.sonar.check.Rule;
 import org.sonar.plugins.java.api.JavaFileScanner;
 import org.sonar.plugins.java.api.JavaFileScannerContext;
 import org.sonar.plugins.java.api.tree.*;
+import org.sonar.squidbridge.annotations.SqaleConstantRemediation;
 
 import java.util.List;
 import java.util.Set;
@@ -17,7 +19,13 @@ import java.util.Set;
  * 创建时间：2019/11/25 10:24 <br/>
  */
 @SuppressWarnings("UnstableApiUsage")
-@Rule(key = "TryCatchLogCheck")
+@Rule(
+        key = "TryCatchLogCheck",
+        name = LogIssueMsg.IssueMsg_1,
+        tags = {"custom-bug"},
+        priority = Priority.CRITICAL
+)
+@SqaleConstantRemediation("10min")
 @Slf4j
 public class TryCatchLogCheck extends BaseTreeVisitor implements JavaFileScanner {
     private static final String LoggerClassName = "org.slf4j.Logger";

@@ -1,0 +1,13 @@
+{
+  "title": "【强制】禁止使用e.printStackTrace()",
+  "type": "BUG",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "10min"
+  },
+  "tags": [
+    "custom-bug"
+  ],
+  "defaultSeverity": "Critical"
+}

@@ -12,6 +12,7 @@ import java.util.List;
  *
  * This class is a batch extension by implementing the {@link org.sonar.plugins.java.api.CheckRegistrar} interface.
  */
+@SuppressWarnings("UnstableApiUsage")
 @SonarLintSide
 public class MyJavaFileCheckRegistrar implements CheckRegistrar {
 
@@ -27,14 +28,14 @@ public class MyJavaFileCheckRegistrar implements CheckRegistrar {
   /**
    * Lists all the main checks provided by the plugin
    */
-  public static List<Class<? extends JavaCheck>> checkClasses() {
+  private static List<Class<? extends JavaCheck>> checkClasses() {
     return RulesList.getJavaChecks();
   }
 
   /**
    * Lists all the test checks provided by the plugin
    */
-  public static List<Class<? extends JavaCheck>> testCheckClasses() {
+  private static List<Class<? extends JavaCheck>> testCheckClasses() {
     return RulesList.getJavaTestChecks();
   }
 }

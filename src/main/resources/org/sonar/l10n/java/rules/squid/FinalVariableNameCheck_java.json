@@ -1,13 +1,13 @@
 {
-  "title": "测试java-custom Bug [json]",
+  "title": "【强制】终态变量命名采用全大写以下划线分割",
   "type": "BUG",
   "status": "ready",
   "remediation": {
     "func": "Constant\/Issue",
-    "constantCost": "5min"
+    "constantCost": "10min"
   },
   "tags": [
-    "pitfall"
+    "custom-bug"
   ],
   "defaultSeverity": "Critical"
 }

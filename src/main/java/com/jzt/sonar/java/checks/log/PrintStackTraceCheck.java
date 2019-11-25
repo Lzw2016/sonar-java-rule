@@ -3,11 +3,13 @@ package com.jzt.sonar.java.checks.log;
 import com.google.common.collect.ImmutableList;
 import com.jzt.sonar.java.checks.AbstractMethodDetection;
 import lombok.extern.slf4j.Slf4j;
+import org.sonar.check.Priority;
 import org.sonar.check.Rule;
 import org.sonar.java.matcher.MethodMatcher;
 import org.sonar.java.matcher.NameCriteria;
 import org.sonar.java.matcher.TypeCriteria;
 import org.sonar.plugins.java.api.tree.MethodInvocationTree;
+import org.sonar.squidbridge.annotations.SqaleConstantRemediation;
 
 import java.util.List;
 
@@ -18,7 +20,13 @@ import java.util.List;
  * 创建时间：2019/11/25 13:33 <br/>
  */
 @SuppressWarnings("UnstableApiUsage")
-@Rule(key = "PrintStackTraceCheck")
+@Rule(
+        key = "PrintStackTraceCheck",
+        name = LogIssueMsg.IssueMsg_2,
+        tags = {"custom-bug"},
+        priority = Priority.CRITICAL
+)
+@SqaleConstantRemediation("10min")
 @Slf4j
 public class PrintStackTraceCheck extends AbstractMethodDetection {
 

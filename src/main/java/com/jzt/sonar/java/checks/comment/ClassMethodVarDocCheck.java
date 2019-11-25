@@ -37,14 +37,14 @@ public class ClassMethodVarDocCheck extends BaseTreeVisitor implements JavaFileS
 
     @Override
     public void visitClass(ClassTree tree) {
-        String classJavadoc = getJavadoc(tree.modifiers().firstToken());
+        String classJavadoc = getJavadoc(tree.firstToken());
         reportJavaDocIssue(classJavadoc, tree);
         super.visitClass(tree);
     }
 
     @Override
     public void visitMethod(MethodTree tree) {
-        String classJavadoc = getJavadoc(tree.modifiers().firstToken());
+        String classJavadoc = getJavadoc(tree.firstToken());
         reportJavaDocIssue(classJavadoc, tree);
         super.visitMethod(tree);
     }
@@ -52,7 +52,7 @@ public class ClassMethodVarDocCheck extends BaseTreeVisitor implements JavaFileS
     @Override
     public void visitVariable(VariableTree tree) {
         if (tree.symbol().isPublic() || tree.symbol().isProtected() || tree.symbol().isPrivate()) {
-            String classJavadoc = getJavadoc(tree.modifiers().firstToken());
+            String classJavadoc = getJavadoc(tree.firstToken());
             reportJavaDocIssue(classJavadoc, tree);
         }
         super.visitVariable(tree);

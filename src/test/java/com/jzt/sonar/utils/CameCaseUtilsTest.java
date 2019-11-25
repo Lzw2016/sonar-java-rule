@@ -17,6 +17,7 @@ public class CameCaseUtilsTest {
         log.info("### --> {}", CameCaseUtils.checkUpperCameCase("CheckUpperCameCaseA"));
         log.info("### --> {}", CameCaseUtils.checkUpperCameCase("CheckUpperCameCaseAA"));
         log.info("### --> {}", CameCaseUtils.checkUpperCameCase("CheckUpperCameCaseAAaaa"));
+        log.info("### --> {}", CameCaseUtils.checkUpperCameCase("IDCreateUtils"));
     }
 
     @Test
@@ -26,6 +27,7 @@ public class CameCaseUtilsTest {
         log.info("### --> {}", CameCaseUtils.checkLowerCameCase("checkUpperCameCaseA"));
         log.info("### --> {}", CameCaseUtils.checkLowerCameCase("checkUpperCameCaseAA"));
         log.info("### --> {}", CameCaseUtils.checkLowerCameCase("checkUpperCameCaseAAaaa"));
+        log.info("### --> {}", CameCaseUtils.checkLowerCameCase("setAsText"));
     }
 
     @Test

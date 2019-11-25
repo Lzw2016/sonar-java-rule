@@ -45,12 +45,15 @@ public class CameCaseNameCheck extends BaseTreeVisitor implements JavaFileScanne
         super.visitClass(tree);
     }
 
+    @SuppressWarnings("ConstantConditions")
     @Override
     public void visitMethod(MethodTree tree) {
-        tree.symbol().returnType();
-        String methodName = tree.simpleName().name();
-        if (!CameCaseUtils.checkLowerCameCase(methodName)) {
-            context.reportIssue(this, tree, NamedIssueMsg.IssueMsg_1);
+        // 判断是否为构造函数，构造函数返回类型为null
+        if (tree.symbol().returnType() != null) {
+            String methodName = tree.simpleName().name();
+            if (!CameCaseUtils.checkLowerCameCase(methodName)) {
+                context.reportIssue(this, tree, NamedIssueMsg.IssueMsg_1);
+            }
         }
         super.visitMethod(tree);
     }

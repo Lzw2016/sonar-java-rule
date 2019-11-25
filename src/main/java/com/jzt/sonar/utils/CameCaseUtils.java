@@ -31,7 +31,7 @@ public class CameCaseUtils {
      */
     public static boolean checkUpperCameCase(String name) {
         if (StringUtils.isBlank(name)) {
-            return false;
+            return true;
         }
         return UPPER_PATTERN.matcher(name).matches();
     }
@@ -41,14 +41,14 @@ public class CameCaseUtils {
      */
     public static boolean checkLowerCameCase(String name) {
         if (StringUtils.isBlank(name)) {
-            return false;
+            return true;
         }
         return LOWER_PATTERN.matcher(name).matches();
     }
 
     public static boolean checkAllUpper(String name) {
         if (StringUtils.isBlank(name)) {
-            return false;
+            return true;
         }
         return ALL_UPPER.matcher(name).matches();
     }

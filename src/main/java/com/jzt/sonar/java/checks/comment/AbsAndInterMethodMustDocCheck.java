@@ -58,7 +58,6 @@ public class AbsAndInterMethodMustDocCheck extends BaseTreeVisitor implements Ja
                 boolean isThrows = !tree.symbol().thrownTypes().isEmpty();
                 // 有返回值
                 boolean isReturn = (!"void".equals(tree.symbol().returnType().name()));
-
                 NoMethodDesc(tree, javaDoc);
                 NoMethodParam(tree, paramCount, javaDoc);
                 NoMethodThrows(tree, isThrows, javaDoc);

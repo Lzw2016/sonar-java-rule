@@ -11,6 +11,8 @@ import org.sonar.plugins.java.api.tree.Tree;
 import java.util.List;
 
 /**
+ * 方法调用检查
+ *
  * 作者：lizw <br/>
  * 创建时间：2019/11/25 11:46 <br/>
  */

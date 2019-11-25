@@ -8,7 +8,7 @@ package com.jzt.sonar.java.checks;
  */
 public class CheckTypeConstant {
     private static final String PREFIX = "【";
-    private static final String SUFFIX = "】";
+    private static final String SUFFIX = "】-->";
 
     /**
      * 命名
@@ -33,11 +33,24 @@ public class CheckTypeConstant {
 }
 
 
+//
+//https://github.com/SonarSource/sonar-java/blob/master/docs/CUSTOM_RULES_101.md
+//
+//
+//  info 提示
+//  minor 次要
+//  major 只要
+//  critical 严重
+//  blocker 阻断
+//
+//  https://github.com/wychenzhou/sonarqube_java_custom_rule
+
+
 //一、要求
 //命名
 //
-//【强制】类名、方法名、成员变量采用标准驼峰规则。类名首字母大写，方法名、成员变量首字母小写
-//【强制】终态变量命名采用全大写以下划线分割
+//【强制】类名、方法名、成员变量采用标准驼峰规则。类名首字母大写，方法名、成员变量首字母小写 OK
+//【强制】终态变量命名采用全大写以下划线分割 OK
 //-----------------------------------------------------------------------------------------------------------------------------------------
 //【推荐】各种命名必须表意准确、尽可能短，除2代替‘to’，4代替‘for’外，不建议在命名中使用数字
 //【推荐】通过方法名称要能识别方法的作用
@@ -97,3 +110,6 @@ public class CheckTypeConstant {
 //【推荐】明确集合大小时,在初始化时尽量指定集合大小
 //【推荐】频繁调用Collection.contains(或者containAll)时,如果可以替换成Set尽量使用Set
 //【推荐】使用es索引查询数据时,明确获取字段source,尽量避免查询返回所有source
+
+
+

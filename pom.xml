@@ -5,7 +5,7 @@
 
     <groupId>com.jzt.sonar</groupId>
     <artifactId>sonar-java-rule</artifactId>
-    <version>1.0.8-SNAPSHOT</version>
+    <version>1.0.9-SNAPSHOT</version>
     <packaging>sonar-plugin</packaging>
 
     <properties>

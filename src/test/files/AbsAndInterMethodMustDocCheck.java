@@ -23,16 +23,11 @@ public abstract class AbstractJocDemo {
      * @throws IOException
      */
     public abstract void cc() throws IOException;
-}
 
-
-/**
- * 作者：lizw <br/>
- * 创建时间：2017/9/15 21:06 <br/>
- */
-interface BaseClient {
     /**
-     * 视图页面(JSP)的后缀
+     * 全局执行的任务(JVM内同一时刻只有一个线程执行)
+     *
+     * @throws Throwable qwqw
      */
-    String JSON_SUFFIX = ".json";
+    protected abstract void internalExecute() throws Throwable;
 }
